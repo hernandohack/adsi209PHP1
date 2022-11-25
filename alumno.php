@@ -21,7 +21,8 @@ $query=mysqli_query($con,$sql);
         <div class="row"> 
             <div class="col-md-3"> 
                 <h1>Ingrese datos</h1>
-                <form action="insertar.php" method="post"> 
+                <form action="AlumnoController.php" method="post"> 
+                    <input type="hidden" name="guardar">
                     <!-- <input type="text" class="form-control mb-3" name="codigo" placeholder="codigo"> -->
                     <input type="text" class="form-control mb-3" name="doc" placeholder="doc">
                     <input type="text" class="form-control mb-3" name="nombres" placeholder="nombres">
@@ -40,17 +41,28 @@ $query=mysqli_query($con,$sql);
                             <th>Apellidos</th>
                             <th></th>
                             <th></th>
-                        </thead>
+                        </tr>
+                    </thead>
                         <tbody>
                             <?php
-                            while ($row=mysqli_fetch_array($query)){
-                                ?>
-                            <th><?php echo $row['codigo']?></th>
-                            <th><?php echo $row['doc']?></th>
+                            while ($row= mysqli_fetch_array($query)){
+                            ?>
+                        <tr>
+                            <th><?php echo $row['id']    ?></th>
+                            <th><?php echo $row['documento']?></th>
                             <th><?php echo $row['nombres']?></th>
                             <th><?php echo $row['apellidos']?></th>
-                            <th><a href="actualizar.php?id=<?php echo $row['codigo']?>" class="btn btn-info">Editar</a></th>
-                            <th><a href="delete.php?id=<?php echo $row['codigo']?>" class="btn btn-danger">Eliminar</a></th>
+                            <th><a href="editarAlumno.php?id=<?php echo($row['id'])?>">Editar</a></th>
+                            <th>
+                                <form action="AlumnoController.php" method="POST">
+                                    <input type="hidden" name="eliminar" value="<?php echo($row['id']);    ?>">
+                                    <button type="submit">Eliminar </button>
+                                </form>
+
+                            </th>
+                           
+                            <!-- <th><a href="actualizar.php?id=<?php echo $row['codigo']?>" class="btn btn-info">Editar</a></th>
+                            <th><a href="delete.php?id=<?php echo $row['codigo']?>" class="btn btn-danger">Eliminar</a></th> -->
                         </tr>
                             <?php
                              }

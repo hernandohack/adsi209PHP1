@@ -14,9 +14,7 @@ if(isset($_POST['guardar'])){
 
     if($query){
         header("location: alumno.php");
-
     }else{
-
 }
 }
 

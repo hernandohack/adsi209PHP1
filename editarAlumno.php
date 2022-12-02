@@ -7,7 +7,7 @@ $con=conectar();
 $sql="SELECT * FROM alumno where  id=$id";
 $query=mysqli_query($con,$sql);
 
-$alumno= mysqli_fetch_array($query);
+$alumno = mysqli_fetch_array($query);
 
 ?>
 
@@ -24,9 +24,9 @@ $alumno= mysqli_fetch_array($query);
             <div class="col-md-3"> 
                 <h1>Ingrese datos</h1>
                 <form action="AlumnoController.php" method="post"> 
-                    <input type="hidden" name="editar" value="<?php  echo($alumno['id']);  ?>">
+                    <input type="hidden" name="editar" value="<?php   echo($id)   ?>" >
                     <!-- <input type="text" class="form-control mb-3" name="codigo" placeholder="codigo"> -->
-                    <input type="text" class="form-control mb-3" name="doc" placeholder="doc" value="<?php  echo($alumno['documento']);  ?>">
+                    <input type="text" class="form-control mb-3" name="doc" placeholder="doc" value="<?php echo($alumno['documento'])   ?>">
                     <input type="text" class="form-control mb-3" name="nombres" placeholder="nombres" value="<?php echo($alumno['nombres'])   ?>">
                     <input type="text" class="form-control mb-3" name="apellidos" placeholder="apellidos" value="<?php echo($alumno['apellidos']) ?>">
                     <input type="submit" class="btn btn-primary">
